@@ -1,0 +1,20 @@
+domain,workflow,field,meaning,accepted_units,formula_or_rule,output_or_note,evidence_type
+geometry,area,length,Usable measured length,ft|m,Use the inside or finished-project dimension,Keep the measured value visible,geometry
+geometry,area,width,Usable measured width,ft|m,Use the inside or finished-project dimension,Keep the measured value visible,geometry
+geometry,area,diameter,Usable circle diameter,ft|m,Use the inside or finished-project dimension,Needed for circle rows,geometry
+geometry,area,depth,Finished material depth,in|cm,Convert to feet or metres before multiplying,Depth is a project input not a universal recommendation,geometry
+geometry,container,height,Usable inside height,in|cm,Convert to feet or metres before multiplying,Use the fill level the project requires,geometry
+geometry,container,quantity,Number of identical containers,whole number,Multiply the row volume by quantity,One specification per row,arithmetic
+geometry,container,shape,Container geometry,round|square|window-box|tapered,Use the matching geometric formula,Do not mix outside wall thickness into inside dimensions,geometry
+allowance,ordering,waste_percent,Extra for handling or trimming,percent,planned = measured × (1 + waste ÷ 100),Optional and user-entered,planning input
+allowance,ordering,settling_percent,Extra for settling or compaction,percent,Apply after waste when the workflow calls for both,Optional and user-entered,planning input
+material,product,bag_volume_cubic_feet,Printed volume of one cubic-foot bag,cu ft,whole bags = ceiling(planned ÷ bag volume),Use the package label,product fact
+material,product,bag_volume_dry_quarts,Printed volume of one dry-quart bag,dry qt,approximate dry qt total ÷ printed dry qt per bag,Use the package label,product fact
+material,product,density_lb_per_cubic_foot,Product density when weight is needed,lb/cu ft,short tons = planned cu ft × density ÷ 2000,Leave blank when the label does not provide it,product fact
+material,product,bale_coverage,Actual pine-straw bale coverage,ft²/bale or m²/bale,whole bales = ceiling(area ÷ coverage),Never treat a starting point as a guarantee,product fact
+purchase,quote,bag_price,Price for the selected bag size,currency per bag,bag material total = whole bags × bag price,User or supplier quote only,quote
+purchase,quote,bulk_price,Price per cubic yard,currency per yd³,bulk material total = planned yd³ × bulk price,User or supplier quote only,quote
+purchase,quote,delivery_fee,Delivery or pickup fee,currency,Keep separate then add only when entered,No local price is inferred,quote
+conversion,unit,cubic_foot_to_yard,One cubic yard in cubic feet,cu ft/yd³,1 yd³ = 27 cu ft,Exact unit conversion,conversion
+conversion,unit,cubic_foot_to_litre,Litres in one cubic foot,L/cu ft,1 cu ft = 28.316846592 L,Exact unit conversion,conversion
+conversion,unit,cubic_foot_to_dry_quart,Planning dry-quart conversion,dry qt/cu ft,1 cu ft ≈ 25.7 dry qt,Approximate and labeled,conversion

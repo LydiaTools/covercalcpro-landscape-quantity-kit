@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Landscape Volume Check</title>
+  <style>
+    :root { color-scheme: light; font-family: system-ui, -apple-system, sans-serif; line-height: 1.45; }
+    body { max-width: 56rem; margin: 0 auto; padding: 2rem 1rem 4rem; color: #17352b; background: #f5f8f3; }
+    h1 { margin-bottom: .35rem; } h2 { margin-top: 2rem; }
+    .intro { max-width: 46rem; color: #456257; }
+    form, .results, .notes { padding: 1rem; border: 1px solid #c9d9cf; border-radius: 12px; background: #fff; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: .8rem; }
+    label { display: grid; gap: .3rem; font-weight: 650; }
+    input, select, button { font: inherit; padding: .6rem .7rem; border: 1px solid #94ad9e; border-radius: 8px; }
+    button { cursor: pointer; background: #1f6a4c; color: #fff; border-color: #1f6a4c; font-weight: 700; }
+    .secondary { background: #edf5ef; color: #1f6a4c; }
+    .hidden { display: none; }
+    .results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: .7rem; }
+    .card { padding: .8rem; border-radius: 9px; background: #edf5ef; }
+    .value { display: block; margin-top: .2rem; font-size: 1.35rem; font-weight: 800; }
+    table { width: 100%; border-collapse: collapse; margin-top: .8rem; }
+    th, td { padding: .45rem; border-bottom: 1px solid #dbe7df; text-align: left; }
+    .muted { color: #5c7166; font-size: .92rem; }
+    .error { color: #9c271e; font-weight: 700; min-height: 1.4em; }
+    @media (max-width: 390px) { body { padding: 1rem .65rem 3rem; } form, .results, .notes { padding: .8rem; } }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Landscape Volume Check</h1>
+    <p class="intro">A small, transparent checker for one rectangle or circle. It shows the measured volume, an optional ordering allowance, common conversions, and whole-bag counts. No prices, density, coverage, or supplier rules are guessed.</p>
+
+    <form id="volume-form">
+      <div class="grid">
+        <label>Shape
+          <select id="shape">
+            <option value="rectangle">Rectangle</option>
+            <option value="circle">Circle</option>
+          </select>
+        </label>
+        <label>Units
+          <select id="units">
+            <option value="us">US customary · ft and in</option>
+            <option value="metric">Metric · m and cm</option>
+          </select>
+        </label>
+        <label id="length-label">Length <span class="unit-label">(ft)</span>
+          <input id="length" type="number" min="0" step="any" inputmode="decimal" placeholder="Enter length">
+        </label>
+        <label id="width-label">Width <span class="unit-label">(ft)</span>
+          <input id="width" type="number" min="0" step="any" inputmode="decimal" placeholder="Enter width">
+        </label>
+        <label id="diameter-label" class="hidden">Diameter <span class="unit-label">(ft)</span>
+          <input id="diameter" type="number" min="0" step="any" inputmode="decimal" placeholder="Enter diameter">
+        </label>
+        <label>Depth <span id="depth-unit" class="unit-label">(in)</span>
+          <input id="depth" type="number" min="0" step="any" inputmode="decimal" placeholder="Enter depth">
+        </label>
+        <label>Ordering allowance (%)
+          <input id="allowance" type="number" min="0" max="100" step="any" value="0" inputmode="decimal">
+        </label>
+      </div>
+      <p id="error" class="error" role="alert"></p>
+      <button type="submit">Check volume</button>
+      <button id="clear" class="secondary" type="button">Clear</button>
+    </form>
+
+    <section class="results" aria-live="polite" aria-labelledby="results-title">
+      <h2 id="results-title">Result</h2>
+      <div class="results-grid">
+        <div class="card">Measured volume<span id="measured" class="value">—</span></div>
+        <div class="card">Planned volume<span id="planned" class="value">—</span></div>
+        <div class="card">Cubic yards<span id="yards" class="value">—</span></div>
+        <div class="card">Litres<span id="litres" class="value">—</span></div>
+        <div class="card">Dry quarts ≈<span id="quarts" class="value">—</span></div>
+      </div>
+      <h3>Common cubic-foot bags</h3>
+      <table>
+        <thead><tr><th>Printed bag volume</th><th>Whole bags</th></tr></thead>
+        <tbody id="cubic-bags"></tbody>
+      </table>
+      <p class="muted">Dry-quart conversion is approximate: 1 cubic foot ≈ 25.7 dry quarts. Use the printed product volume for purchasing.</p>
+    </section>
+
+    <section class="notes">
+      <h2>Formula</h2>
+      <p id="formula">Rectangle volume = length × width × depth. Planned volume = measured volume × (1 + allowance ÷ 100). Cubic yards = cubic feet ÷ 27.</p>
+      <p class="muted">This is a planning check, not a supplier quote or material prescription. Confirm the label, finished depth, order increment, and delivery rules before buying.</p>
+    </section>
+  </main>
+  <script>
+    (() => {
+      const $ = (id) => document.getElementById(id);
+      const cubicFootToLitres = 28.316846592;
+      const cubicFootToDryQuarts = 25.7;
+      const cubicFootBags = [0.75, 1, 1.5, 2];
+      const fields = ['length', 'width', 'diameter', 'depth', 'allowance'];
+
+      function number(id) { return Number($(id).value); }
+      function rounded(value, digits = 2) {
+        return Number.isFinite(value) ? value.toFixed(digits).replace(/\.00$/, '') : '—';
+      }
+      function updateLabels() {
+        const metric = $('units').value === 'metric';
+        const unit = metric ? 'm' : 'ft';
+        document.querySelectorAll('.unit-label').forEach((node) => {
+          node.textContent = `(${node.parentElement.id === 'depth' ? (metric ? 'cm' : 'in') : unit})`;
+        });
+        $('depth-unit').textContent = metric ? '(cm)' : '(in)';
+      }
+      function updateShape() {
+        const circle = $('shape').value === 'circle';
+        $('length-label').classList.toggle('hidden', circle);
+        $('width-label').classList.toggle('hidden', circle);
+        $('diameter-label').classList.toggle('hidden', !circle);
+        $('formula').textContent = circle
+          ? 'Circle volume = π × (diameter ÷ 2)² × depth. Planned volume = measured volume × (1 + allowance ÷ 100).'
+          : 'Rectangle volume = length × width × depth. Planned volume = measured volume × (1 + allowance ÷ 100). Cubic yards = cubic feet ÷ 27.';
+      }
+      function toMetres(value, horizontal) {
+        return $('units').value === 'metric' ? value : (horizontal ? value : value / 12) * (horizontal ? 1 : 0.3048);
+      }
+      function render(event) {
+        if (event) event.preventDefault();
+        const shape = $('shape').value;
+        const depth = number('depth');
+        const allowance = number('allowance');
+        const horizontalDepth = $('units').value === 'metric' ? depth / 100 : depth / 12;
+        let measured;
+        if (!Number.isFinite(depth) || depth <= 0 || !Number.isFinite(allowance) || allowance < 0) measured = NaN;
+        else if (shape === 'circle') {
+          const diameter = number('diameter');
+          measured = Number.isFinite(diameter) && diameter > 0 ? Math.PI * Math.pow(diameter / 2, 2) * horizontalDepth : NaN;
+          if ($('units').value === 'metric' && Number.isFinite(measured)) measured /= 0.028316846592;
+        } else {
+          const length = number('length');
+          const width = number('width');
+          measured = Number.isFinite(length) && length > 0 && Number.isFinite(width) && width > 0
+            ? ( $('units').value === 'metric' ? length * width * horizontalDepth / 0.028316846592 : length * width * horizontalDepth )
+            : NaN;
+        }
+        const error = $('error');
+        if (!Number.isFinite(measured)) {
+          error.textContent = 'Enter positive dimensions and a non-negative allowance.';
+          ['measured', 'planned', 'yards', 'litres', 'quarts'].forEach((id) => $(id).textContent = '—');
+          $('cubic-bags').innerHTML = '';
+          return;
+        }
+        error.textContent = '';
+        const planned = measured * (1 + allowance / 100);
+        $('measured').textContent = `${rounded(measured)} cu ft`;
+        $('planned').textContent = `${rounded(planned)} cu ft`;
+        $('yards').textContent = `${rounded(planned / 27)} yd³`;
+        $('litres').textContent = `${rounded(planned * cubicFootToLitres, 1)} L`;
+        $('quarts').textContent = `${Math.ceil(planned * cubicFootToDryQuarts)} dry qt`;
+        $('cubic-bags').innerHTML = cubicFootBags.map((size) => `<tr><td>${size} cu ft</td><td>${Math.ceil(planned / size)}</td></tr>`).join('');
+      }
+      function clear() {
+        fields.forEach((id) => { if (id !== 'allowance') $(id).value = ''; });
+        $('allowance').value = '0';
+        $('error').textContent = '';
+        ['measured', 'planned', 'yards', 'litres', 'quarts'].forEach((id) => $(id).textContent = '—');
+        $('cubic-bags').innerHTML = '';
+      }
+      $('shape').addEventListener('change', updateShape);
+      $('units').addEventListener('change', updateLabels);
+      $('volume-form').addEventListener('submit', render);
+      $('clear').addEventListener('click', clear);
+      updateShape(); updateLabels();
+    })();
+  </script>
+</body>
+</html>
