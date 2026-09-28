@@ -1,0 +1,62 @@
+name: Calculation issue
+description: Report a reproducible calculation or display problem in the local HTML checker.
+title: "[Calculation] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This form is for the standalone checker in this repository. Use example measurements, not your address. Separate arithmetic from supplier recommendations and display rounding from whole-bag rounding.
+  - type: dropdown
+    id: shape
+    attributes:
+      label: Shape
+      options:
+        - Rectangle
+        - Circle
+    validations:
+      required: true
+  - type: dropdown
+    id: units
+    attributes:
+      label: Units
+      options:
+        - US customary (ft and in)
+        - Metric (m and cm)
+    validations:
+      required: true
+  - type: textarea
+    id: inputs
+    attributes:
+      label: Input values
+      description: Include length and width or diameter, depth, and ordering allowance.
+      placeholder: |
+        Length / diameter:
+        Width (rectangle only):
+        Depth:
+        Allowance (%):
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Expected calculation and actual result
+      description: Include your formula and the displayed result or bag row that differs.
+      placeholder: |
+        My calculation:
+        Expected result:
+        Actual displayed result:
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Browser and version
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Safe example
+      options:
+        - label: I have removed addresses and personal information from this report.
+          required: true
