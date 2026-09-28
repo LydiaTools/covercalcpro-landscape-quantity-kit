@@ -4,6 +4,14 @@ Open, dependency-free building blocks for checking landscape material quantities
 
 The companion calculators at [covercalcpro.com](https://covercalcpro.com/) turn the same inputs into browser-based order checks. This repository keeps the reusable field model, formulas, and a small standalone volume checker inspectable.
 
+**[Use the online calculators](https://covercalcpro.com/#calculator)** · **[Try this kit locally](docs/TRY-IT.md)** · [Report a calculation issue](https://github.com/lydiahub19921013/covercalcpro-landscape-quantity-kit/issues)
+
+## See one calculation
+
+![The local Landscape Volume Check with a 20 ft by 10 ft rectangle at 3 in depth, showing 50 cubic feet and 25 two-cubic-foot bags.](docs/assets/volume-check.png)
+
+This is a screenshot of the actual HTML tool using a documented arithmetic example, not a supplier recommendation. A 20 ft × 10 ft rectangle at 3 in depth and 0% allowance gives **50 cu ft**, **1.85 yd³** after display rounding, and **25 bags** if each bag contains 2 cu ft. The dimensions and allowance are chosen for the example; use your measurements and product label when ordering.
+
 ## Included
 
 - `data/landscape-calculator-fields.csv` — a compact field dictionary for area, container, material, allowance, bag, density, and price inputs.
@@ -12,6 +20,13 @@ The companion calculators at [covercalcpro.com](https://covercalcpro.com/) turn 
 - `docs/quantity-checklist.md` — a supplier-ready checklist that separates measured geometry from product facts and quoted prices.
 
 Open the HTML file directly in a modern browser. It does not send measurements anywhere, require an account, or guess prices, density, coverage, or supplier minimums.
+
+```sh
+git clone https://github.com/lydiahub19921013/covercalcpro-landscape-quantity-kit.git
+cd covercalcpro-landscape-quantity-kit
+```
+
+Then open `tools/landscape-volume-check.html` in your browser. No build or package installation is required. The online calculators and the small local checker have different interfaces; this repository does not contain the whole production website.
 
 ## Formula notes
 
@@ -39,3 +54,7 @@ Measured area or container geometry answers “how much space is there?” Produ
 ## License
 
 MIT. See [LICENSE](LICENSE).
+
+## Feedback and contributions
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for reproducible calculation reports, source-backed data corrections, and small changes. If the kit helps with a real project, a Star is welcome; using it does not require one.
