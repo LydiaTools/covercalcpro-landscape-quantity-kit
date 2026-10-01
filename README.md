@@ -51,6 +51,17 @@ The mulch CSV contains only rows shown in the two linked CoverCalc Pro charts. B
 
 Measured area or container geometry answers “how much space is there?” Product volume, density, coverage, order increments, and prices answer “how will this supplier sell it?” Keeping those layers separate makes a result easier to audit and prevents a planning example from looking like a universal product claim.
 
+## Limitations: what this kit does not do
+
+- The standalone checker calculates one rectangle or circle at a uniform depth per run. It does not measure a photo, map an irregular slope, combine multiple sections or choose a suitable application depth.
+- It checks volume and whole bags, not a compost-pile recipe, nutrient plan, drainage design or structural load. It does not decide whether a material is appropriate for your project.
+- It does not provide current prices, delivery fees, availability or a supplier's minimum order. It also does not estimate weight without a separate product-specific density calculation.
+- Bag counts cover the displayed cubic-foot sizes. Use the volume printed on your actual package; a bag's weight alone does not establish its volume. Dry-quart output is approximate and displayed results are rounded.
+- The CSV tables are a bounded export of the linked charts, not a product database or a record of user projects. They do not prove search demand, market prices or universally recommended depths.
+- This is a small reusable kit, not the full production website. It contains no account integration, ordering or payment workflow, and no promise of project outcomes or search rankings.
+
+For a reusable ordering record, keep your measurements, chosen depth and actual supplier facts separate in the [quantity checklist](docs/quantity-checklist.md).
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
