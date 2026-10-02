@@ -4,7 +4,7 @@ Open, dependency-free building blocks for checking landscape material quantities
 
 The companion calculators at [covercalcpro.com](https://covercalcpro.com/) turn the same inputs into browser-based order checks. This repository keeps the reusable field model, formulas, and a small standalone volume checker inspectable.
 
-**[Use the online calculators](https://covercalcpro.com/#calculator)** · **[Try this kit locally](docs/TRY-IT.md)** · [Report a calculation issue](https://github.com/lydiahub19921013/covercalcpro-landscape-quantity-kit/issues)
+**[Use the online calculators](https://covercalcpro.com/#calculator)** · **[Try this kit locally](docs/TRY-IT.md)** · **[Embed a calculator](docs/EMBED.md)** · [Report a calculation issue](https://github.com/lydiahub19921013/covercalcpro-landscape-quantity-kit/issues)
 
 ## See one calculation
 
@@ -18,6 +18,8 @@ This is a screenshot of the actual HTML tool using a documented arithmetic examp
 - `data/mulch-coverage-tables.csv` — a consolidated CSV export of the live depth-coverage and bag-quantity tables, with source URLs on every row.
 - `tools/landscape-volume-check.html` — a zero-dependency browser tool for rectangle and circle volumes, allowances, cubic-yard/litre conversions, and common bag-size checks.
 - `docs/quantity-checklist.md` — a supplier-ready checklist that separates measured geometry from product facts and quoted prices.
+- `examples/hosted-mulch-embed.html` — a responsive garden-blog example containing the live CoverCalc Pro mulch iframe, with a fallback link and a reproducible calculation.
+- `docs/EMBED.md` — copy-and-paste installation, a self-hosting alternative using the existing local checker, and the privacy and hosting differences between the two.
 
 Open the HTML file directly in a modern browser. It does not send measurements anywhere, require an account, or guess prices, density, coverage, or supplier minimums.
 
@@ -61,6 +63,22 @@ Measured area or container geometry answers “how much space is there?” Produ
 - This is a small reusable kit, not the full production website. It contains no account integration, ordering or payment workflow, and no promise of project outcomes or search rankings.
 
 For a reusable ordering record, keep your measurements, chosen depth and actual supplier facts separate in the [quantity checklist](docs/quantity-checklist.md).
+
+## Embed without a build step
+
+For a garden blog or supplier guide, follow [the embed instructions](docs/EMBED.md). The hosted frame checks an already measured area and added depth; the standalone checker in this repository uses rectangle or circle dimensions. They are different tools, not interchangeable copies of the production website.
+
+The example starts with blank inputs, makes no product or price recommendation, and keeps a normal visible link to the full calculator. It does not require a backlink, an account, an API key, or analytics code. The hosted frame requires internet access; the existing standalone checker can run locally or on your own server.
+
+## Check the integration examples
+
+The tools still require no Node.js or dependency installation. Contributors with Node.js 20 or later can run the small static integration test suite:
+
+```sh
+node --test tests/*.test.mjs
+```
+
+These tests check the install snippets, local paths, frame titles, fallback links, and absence of tracker or credential code in the example. They do not prove third-party installs, traffic, or results in every website builder. Use the browser checks in [EMBED.md](docs/EMBED.md#test-before-publishing) before publishing your own page.
 
 ## License
 
