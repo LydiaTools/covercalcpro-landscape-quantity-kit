@@ -25,6 +25,8 @@ Open the HTML file directly in a modern browser, or [try the same checker on Git
 
 For a one-file start, [download the v0.1.1 ZIP](https://github.com/LydiaTools/covercalcpro-landscape-quantity-kit/releases/download/v0.1.1/CoverCalcPro-Landscape-Volume-Check-v0.1.1.zip), extract it, and open `landscape-volume-check.html`. The ZIP also contains a quick-start and the MIT license. Its HTML is the same file tracked in this repository at the [v0.1.1 release](https://github.com/LydiaTools/covercalcpro-landscape-quantity-kit/releases/tag/v0.1.1).
 
+**v0.1.1 ZIP integrity:** 5,173 bytes; SHA-256 `5e82e0f4e47e75cd318f080f9f870300832d54a422e664ef4ead3cf0f5538389`. On Windows, verify with `Get-FileHash .\CoverCalcPro-Landscape-Volume-Check-v0.1.1.zip -Algorithm SHA256`.
+
 ```sh
 git clone https://github.com/LydiaTools/covercalcpro-landscape-quantity-kit.git
 cd covercalcpro-landscape-quantity-kit
