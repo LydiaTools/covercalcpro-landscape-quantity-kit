@@ -40,4 +40,4 @@ Use this short checklist before turning a measurement into an order or quote.
 - Mark whether the number is measured, planned, or supplier-confirmed.
 - If a value is unknown, leave it unknown instead of filling the gap with a generic average.
 
-For an interactive browser workflow, see [CoverCalc Pro](https://covercalcpro.com/). The standalone checker in this repository is intentionally smaller so its formulas can be read and tested without a build system.
+For an interactive browser workflow, see [CoverCalc Pro](https://covercalcpro.com/?utm_source=github&utm_medium=referral&utm_campaign=covercalcpro_kit). The standalone checker in this repository is intentionally smaller so its formulas can be read and tested without a build system.

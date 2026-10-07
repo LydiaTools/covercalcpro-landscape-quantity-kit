@@ -6,7 +6,7 @@ Small, verifiable improvements are welcome. Please keep the volume checker depen
 
 Include the shape, units, dimensions, depth, allowance, browser, actual result, and the calculation you expected. Distinguish display rounding from the value used to round whole bags upward. Use example measurements; do not post home addresses or personal information.
 
-The [calculation issue form](https://github.com/lydiahub19921013/covercalcpro-landscape-quantity-kit/issues/new?template=calculation-issue.yml) lists the inputs needed to reproduce a result. Submitting an issue requires a GitHub account; using the checker does not.
+The [calculation issue form](https://github.com/LydiaTools/covercalcpro-landscape-quantity-kit/issues/new?template=calculation-issue.yml) lists the inputs needed to reproduce a result. Submitting an issue requires a GitHub account; using the checker does not.
 
 ## Correct a data row
 

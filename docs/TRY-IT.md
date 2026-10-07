@@ -2,11 +2,11 @@
 
 ## Choose an entry point
 
-- **Without downloading:** use the companion [CoverCalc Pro online calculators](https://covercalcpro.com/#calculator).
+- **Without downloading:** use the companion [CoverCalc Pro online calculators](https://covercalcpro.com/?utm_source=github&utm_medium=referral&utm_campaign=covercalcpro_kit#calculator).
 - **Offline, with inspectable code:** download or clone this repository, then open `tools/landscape-volume-check.html` in a modern browser. It is a single HTML file, not the complete online website.
 
 ```sh
-git clone https://github.com/lydiahub19921013/covercalcpro-landscape-quantity-kit.git
+git clone https://github.com/LydiaTools/covercalcpro-landscape-quantity-kit.git
 cd covercalcpro-landscape-quantity-kit
 ```
 
@@ -41,4 +41,4 @@ For a second check, choose **Circle**, use a diameter of **10 ft**, a depth of *
 
 Use your own measured dimensions and the volume printed on the bag. Confirm depth, coverage, increments, and delivery rules with the relevant product label or supplier. The [quantity checklist](quantity-checklist.md) helps keep geometry, product facts, and quoted costs separate.
 
-For an incorrect result, [open an issue](https://github.com/lydiahub19921013/covercalcpro-landscape-quantity-kit/issues) with the shape, units, input values, expected calculation, and actual output. Do not include addresses or other personal information.
+For an incorrect result, [open an issue](https://github.com/LydiaTools/covercalcpro-landscape-quantity-kit/issues) with the shape, units, input values, expected calculation, and actual output. Do not include addresses or other personal information.

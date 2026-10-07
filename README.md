@@ -2,9 +2,9 @@
 
 Open, dependency-free building blocks for checking landscape material quantities before a purchase or quote. The kit is aimed at homeowners and small contractors working with mulch, soil, compost, pine straw, raised beds, and container media.
 
-The companion calculators at [covercalcpro.com](https://covercalcpro.com/) turn the same inputs into browser-based order checks. This repository keeps the reusable field model, formulas, and a small standalone volume checker inspectable.
+The companion calculators at [covercalcpro.com](https://covercalcpro.com/?utm_source=github&utm_medium=referral&utm_campaign=covercalcpro_kit) turn the same inputs into browser-based order checks. This repository keeps the reusable field model, formulas, and a small standalone volume checker inspectable.
 
-**[Use the online calculators](https://covercalcpro.com/#calculator)** · **[Try this kit locally](docs/TRY-IT.md)** · **[Embed a calculator](docs/EMBED.md)** · [Report a calculation issue](https://github.com/lydiahub19921013/covercalcpro-landscape-quantity-kit/issues)
+**[Use the online calculators](https://covercalcpro.com/?utm_source=github&utm_medium=referral&utm_campaign=covercalcpro_kit#calculator)** · **[Try this kit locally](docs/TRY-IT.md)** · **[Embed a calculator](docs/EMBED.md)** · [Report a calculation issue](https://github.com/LydiaTools/covercalcpro-landscape-quantity-kit/issues)
 
 ## See one calculation
 
@@ -24,7 +24,7 @@ This is a screenshot of the actual HTML tool using a documented arithmetic examp
 Open the HTML file directly in a modern browser. It does not send measurements anywhere, require an account, or guess prices, density, coverage, or supplier minimums.
 
 ```sh
-git clone https://github.com/lydiahub19921013/covercalcpro-landscape-quantity-kit.git
+git clone https://github.com/LydiaTools/covercalcpro-landscape-quantity-kit.git
 cd covercalcpro-landscape-quantity-kit
 ```
 
