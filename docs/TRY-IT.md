@@ -4,7 +4,7 @@
 
 - **Without downloading, with inspectable code:** [try the standalone checker on GitHub Pages](https://lydiatools.github.io/covercalcpro-landscape-quantity-kit/tools/landscape-volume-check.html). It serves the HTML file in this repository.
 - **For the wider garden tools:** use the companion [CoverCalc Pro online calculators](https://covercalcpro.com/?utm_source=github&utm_medium=referral&utm_campaign=covercalcpro_kit#calculator).
-- **Offline, with inspectable code:** [download the v0.1.0 ZIP](https://github.com/LydiaTools/covercalcpro-landscape-quantity-kit/releases/download/v0.1.0/CoverCalcPro-Landscape-Volume-Check-v0.1.0.zip), extract it, and open `landscape-volume-check.html` in a modern browser. The ZIP includes the MIT license and a short quick-start. It is a single HTML tool, not the complete online website.
+- **Offline, with inspectable code:** [download the v0.1.1 ZIP](https://github.com/LydiaTools/covercalcpro-landscape-quantity-kit/releases/download/v0.1.1/CoverCalcPro-Landscape-Volume-Check-v0.1.1.zip), extract it, and open `landscape-volume-check.html` in a modern browser. The ZIP includes the MIT license and a short quick-start. It is a single HTML tool, not the complete online website.
 
 To browse the fields, data, and integration examples as well, clone the full repository:
 
@@ -20,7 +20,7 @@ No Node.js, account, API key, build step, or dependency installation is needed f
 | Input | Example value |
 | --- | --- |
 | Shape | Rectangle |
-| Units | US customary · ft and in |
+| Units | US · ft / in |
 | Length | 20 ft |
 | Width | 10 ft |
 | Depth | 3 in |
