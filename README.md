@@ -4,7 +4,7 @@ Open, dependency-free building blocks for checking landscape material quantities
 
 The companion calculators at [covercalcpro.com](https://covercalcpro.com/?utm_source=github&utm_medium=referral&utm_campaign=covercalcpro_kit) turn the same inputs into browser-based order checks. This repository keeps the reusable field model, formulas, and a small standalone volume checker inspectable.
 
-**[Use the online calculators](https://covercalcpro.com/?utm_source=github&utm_medium=referral&utm_campaign=covercalcpro_kit#calculator)** · **[Download the offline checker](https://github.com/LydiaTools/covercalcpro-landscape-quantity-kit/releases/download/v0.1.0/CoverCalcPro-Landscape-Volume-Check-v0.1.0.zip)** · **[Try this kit locally](docs/TRY-IT.md)** · **[Embed a calculator](docs/EMBED.md)** · [Report a calculation issue](https://github.com/LydiaTools/covercalcpro-landscape-quantity-kit/issues)
+**[Try the standalone checker live](https://lydiatools.github.io/covercalcpro-landscape-quantity-kit/tools/landscape-volume-check.html)** · **[Download the offline checker](https://github.com/LydiaTools/covercalcpro-landscape-quantity-kit/releases/download/v0.1.0/CoverCalcPro-Landscape-Volume-Check-v0.1.0.zip)** · **[Use the companion online calculators](https://covercalcpro.com/?utm_source=github&utm_medium=referral&utm_campaign=covercalcpro_kit#calculator)** · **[Try this kit locally](docs/TRY-IT.md)** · **[Embed a calculator](docs/EMBED.md)** · [Report a calculation issue](https://github.com/LydiaTools/covercalcpro-landscape-quantity-kit/issues)
 
 ## See one calculation
 
@@ -21,7 +21,7 @@ This is a screenshot of the actual HTML tool using a documented arithmetic examp
 - `examples/hosted-mulch-embed.html` — a responsive garden-blog example containing the live CoverCalc Pro mulch iframe, with a fallback link and a reproducible calculation.
 - `docs/EMBED.md` — copy-and-paste installation, a self-hosting alternative using the existing local checker, and the privacy and hosting differences between the two.
 
-Open the HTML file directly in a modern browser. It does not send measurements anywhere, require an account, or guess prices, density, coverage, or supplier minimums.
+Open the HTML file directly in a modern browser, or [try the same checker on GitHub Pages](https://lydiatools.github.io/covercalcpro-landscape-quantity-kit/tools/landscape-volume-check.html). Calculations run in the browser; the checker does not send measurements, require an account, or guess prices, density, coverage, or supplier minimums.
 
 For a one-file start, [download the v0.1.0 ZIP](https://github.com/LydiaTools/covercalcpro-landscape-quantity-kit/releases/download/v0.1.0/CoverCalcPro-Landscape-Volume-Check-v0.1.0.zip), extract it, and open `landscape-volume-check.html`. The ZIP also contains a quick-start and the MIT license. Its HTML is the same file tracked in this repository at the [v0.1.0 release](https://github.com/LydiaTools/covercalcpro-landscape-quantity-kit/releases/tag/v0.1.0).
 
