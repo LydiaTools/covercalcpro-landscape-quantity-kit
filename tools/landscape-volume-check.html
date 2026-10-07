@@ -22,8 +22,9 @@
     .intro { max-width: 46rem; color: #456257; }
     form, .results, .notes { padding: 1rem; border: 1px solid #c9d9cf; border-radius: 12px; background: #fff; }
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: .8rem; }
-    label { display: grid; gap: .3rem; font-weight: 650; }
+    label { min-width: 0; font-weight: 650; }
     input, select, button { font: inherit; padding: .6rem .7rem; border: 1px solid #94ad9e; border-radius: 8px; }
+    label > input, label > select { display: block; box-sizing: border-box; width: 100%; min-width: 0; margin-top: .3rem; }
     button { cursor: pointer; background: #1f6a4c; color: #fff; border-color: #1f6a4c; font-weight: 700; }
     .secondary { background: #edf5ef; color: #1f6a4c; }
     .hidden { display: none; }
@@ -53,8 +54,8 @@
         </label>
         <label>Units
           <select id="units">
-            <option value="us">US customary · ft and in</option>
-            <option value="metric">Metric · m and cm</option>
+            <option value="us">US · ft / in</option>
+            <option value="metric">Metric · m / cm</option>
           </select>
         </label>
         <label id="length-label">Length <span class="unit-label">(ft)</span>
